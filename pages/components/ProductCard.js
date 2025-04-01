@@ -89,9 +89,9 @@ const ProductCard = ({
           <div className="pr-2">
             <h3 className="text-lg font-bold text-gray-100 mb-1">
               {showFullTitle
-                ? productTitle
-                : productTitle.slice(0, 20) +
-                  (productTitle.length > 20 ? "..." : "")}
+  ? productTitle
+  : (productTitle?.slice(0, 20) || "") +
+    (productTitle && productTitle.length > 20 ? "..." : "")}
             </h3>
             {productTitle.length > 20 && (
               <button
