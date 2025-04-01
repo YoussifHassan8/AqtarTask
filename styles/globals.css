@@ -23,5 +23,5 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  background-color: oklch(0.21 0.034 264.665
+  background-color: oklch(0.21 0.034 264.665);
 }
