@@ -14,6 +14,7 @@ const ProductCard = ({
   rate,
   count,
 }) => {
+  const safeTitle = productTitle || "";
   const [showFullTitle, setShowFullTitle] = useState(false);
   const [openPopUp, setOpenPopUp] = useState(false);
   useEffect(() => {
@@ -75,35 +76,31 @@ const ProductCard = ({
 
       <div className="mb-6 w-full h-[300px] rounded-xl mx-auto overflow-hidden relative">
         <Image
-          src={productImage}
-          alt={`${productTitle} - Buy Now at $${productPrice}`}
-          width={400}
-          height={300}
-          className="object-contain"
-          priority={false}
-        />
+  src={productImage}
+  alt={`${productTitle} - Buy Now at $${productPrice}`}
+  width={400}
+  height={300}
+  className="object-contain"
+  priority={false}
+/>
       </div>
 
       <div className="space-y-4">
         <div className="flex justify-between items-start">
           <div className="pr-2">
             <h3 className="text-lg font-bold text-gray-100 mb-1">
-              {showFullTitle
-  ? productTitle
-  : (productTitle?.slice(0, 20) || "") +
-    (productTitle && productTitle.length > 20 ? "..." : "")}
-            </h3>
-            {productTitle.length > 20 && (
-              <button
-                onClick={toggleTitle}
-                className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors font-medium cursor-pointer"
-                aria-label={
-                  showFullTitle ? "Show less title" : "Show more title"
-                }
-              >
-                {showFullTitle ? "Show less" : "Show more"}
-              </button>
-            )}
+  {showFullTitle ? safeTitle : safeTitle.slice(0, 20) + (safeTitle.length > 20 ? "..." : "")}
+</h3>
+{safeTitle.length > 20 && (
+  <button
+    onClick={toggleTitle}
+    className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors font-medium cursor-pointer"
+    aria-label={showFullTitle ? "Show less title" : "Show more title"}
+  >
+    {showFullTitle ? "Show less" : "Show more"}
+  </button>
+)}
+
           </div>
           <p className="text-2xl font-black text-emerald-400 shrink-0">
             ${productPrice}
